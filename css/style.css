@@ -1,0 +1,118 @@
+body{ /* Applying styles to the body in default view */
+    font-family: 'Poppins', serif; /* Setting the font */
+    background-image: url("../images/concrete_seamless.png"); /* Setting the background image */
+    background-color: #f1f1f1; /* Setting the background color */
+}
+header{ /* Applying styles to the header in default view */
+    display: flex; /* Creating a flex container for header elements */
+    flex-direction: column; /* Setting the flex layout to columns */
+    align-items: center; /* Center aligning the items */
+}
+.nav_links{ /* Applying styles to the nav_links class in default view */
+    display: flex; /* Creating a flex container for nav_links class */
+    flex-direction: column; /* Setting the flex layout to columns */
+}
+.nav_links a:visited{ /* Applying styles to the visited links default view */
+    color: #0000FF; /* Setting the visited link color */
+}
+.nav_links a:hover, a:focus{ /* Applying styles to links in focus or being hovered in default view */
+    color: #50C7C7; /* Setting the color of links in focus or being hovered*/
+    text-decoration: underline; /* Setting the style of links in focus or being hovered*/
+    -webkit-text-decoration-style: dotted; /* Setting the style of links in focus or being hovered*/
+            text-decoration-style: dotted; 
+}
+.pricing{ /* Applying styles to the pricing class in default view */
+    display: flex;  /* Creating a flex container for pricing class */
+    flex-direction: row; /* Setting the flex layout to rows */
+    flex-wrap: wrap; /* Allowing flex items to wrap */
+    align-items: center; /* Center aligning the items vertically */
+    justify-content: center; /* Center aligning the items horizontally */
+}
+.card{ /* Applying styles to the card class in default view */
+    border-top-left-radius: 50px; /* Adding curved edges to the top */
+    border-top-right-radius: 50px; /* Adding curved edges to the top */
+    border-bottom-left-radius: 0px; /* Adding sharp edges to the top */
+    border-bottom-right-radius: 0px; /* Adding sharp edges to the top */
+    flex-basis:450px; /* Setting initial size of 450px */
+}
+.card > header{ /* Applying styles to only the header elements that are direct children of the card class in default view */
+    background: #288088; /* Setting the background color */
+    border: solid 2px #45ADAD; /* Adding a border */
+    padding-top: 20px; /* Adding padding to the top */
+    padding-bottom: 20px; /* Adding padding at the bottom */
+    border-top-left-radius: 50px; /* Adding curved edges to the top */
+    border-top-right-radius: 50px; /* Adding curved edges to the top */
+}
+.gallery{ /* Applying styles to the gallery class in default view */
+    display: flex; /* Creating a flex container for gallery class */
+    flex-wrap: wrap; /* Allowing flex items to wrap */
+    justify-content: center; /* Center aligning the items horizontally */
+}
+.gallery img{ /* Applying styles to images in the gallery class in default view */
+    border: solid 10px #50C7C7; /* Adding a border */
+    margin: 10px; /* Adding margins */
+    width: 300px; /* Setting the width to 300px */
+}
+#logo{ /* Applying styles to the logo id in default view */
+    animation-name: animated_logo; /* Adding logo animation */
+    animation-duration: 5s; /* Adding logo animation duration */
+    animation-fill-mode: forwards; /* Adding logo animation fill mode */
+}
+@keyframes animated_logo { /* Animation for the logo */
+    from {width: 25px; opacity: 0;} /* Starting logo animation with 25px width and 0 opacity */
+    to {width: 475px; opacity: 1;} /* Ending logo animation with 475px width and 1 opacity */
+}
+@media (prefers-reduced-motion){ /* Media query to add changes when ser has prefers-reduced-motion enabled */
+    #logo{
+        animation: none; /* Disabling the animation on the logo when the user prefers-reduced-motion */
+    }
+}
+@media screen and (min-width: 900px){ /* Breakpoint for when screen width of 900px and greater */
+    header{
+        flex-direction: row; /* Changing the flex layout to row */
+        justify-content: space-between; /* This left aligns the logo and right aligns the nav links */
+    }
+    header:not(main header){ /* Adding a sticky navbar by selecting the header outside of main */
+        position: sticky; 
+        top: 0;
+    }
+    .nav_links{
+        flex-direction: row; /* Changing the flex layout to row */
+    }
+    .pricing{
+        flex-direction:row /* Changing the flex layout to row */
+    }
+    .card{
+        flex-basis: 275px; /* Changing initial size to 275px */
+    }
+}
+@media print{ /* Breakpoint for print view */
+    body{
+        font-family: Arial, Helvetica; /* Changing the font to Arial with a backup font of Helvetica */
+        background-image: none; /* Removing the background image */
+    }
+    nav{
+        width:100%; /* Having the nav class span the full width of the screen */
+    }
+    .nav_links{
+        flex-direction: row; /* Changing the flex layout to row */
+        justify-content: space-around; /* Evenly spacing the nav links */
+    }
+    .pricing{
+        flex-wrap: nowrap; /* Removing flex wrap */
+        align-items:flex-end; /* Aligning the felx items at the bottoms */
+    }
+    .card{
+        border: solid 2px #45ADDD; /* Adding a border */
+        flex-basis: 325px; /* Changing initial size to 325px */
+    }
+    #gallery{
+        visibility: hidden; /* Making gallery title hidden from view */
+    }
+    .gallery{
+        display: none; /* Removing gallery from display */
+    }
+    .card > :nth-child(2) > :nth-child(2)::after{ /* Selecting what's after the second child of the second child of the card class */
+        content: "👍"; /* Adding a thumbs up */
+    }
+}
